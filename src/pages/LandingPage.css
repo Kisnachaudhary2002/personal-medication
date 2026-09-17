@@ -1,0 +1,209 @@
+/* ===== Hero ===== */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 80px 6vw 60px;
+}
+@media (max-width: 880px) {
+  .hero { grid-template-columns: 1fr; padding: 48px 6vw; }
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: var(--amber-dark);
+  background: var(--amber-tint);
+  padding: 5px 12px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  line-height: 1.08;
+  margin: 0 0 20px;
+  color: var(--teal-dark);
+}
+.hero h1 em { color: var(--amber-dark); font-style: normal; }
+
+.hero p.lede {
+  font-size: 1.08rem;
+  color: var(--muted);
+  max-width: 46ch;
+  margin-bottom: 30px;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+
+.hero-trust { display: flex; gap: 24px; font-size: 0.85rem; color: var(--muted); flex-wrap: wrap; }
+.hero-trust strong { color: var(--teal-dark); font-family: var(--font-mono); }
+
+/* ===== Signature element: the Dose Timeline ===== */
+.dose-timeline-widget {
+  background: var(--teal-dark);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px 24px;
+  color: #fff;
+  box-shadow: 0 24px 60px rgba(15, 55, 53, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+.dose-timeline-widget::before {
+  content: "";
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(217,138,61,0.25), transparent 70%);
+}
+.dtw-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 22px; }
+.dtw-header h4 { margin: 0; font-family: var(--font-display); font-size: 1.05rem; }
+.dtw-header span { font-family: var(--font-mono); font-size: 0.78rem; color: #9FC4BE; }
+
+.dtw-track { position: relative; height: 4px; background: rgba(255,255,255,0.15); border-radius: 4px; margin: 40px 6px 46px; }
+.dtw-now-line {
+  position: absolute;
+  top: -14px;
+  width: 2px;
+  height: 32px;
+  background: var(--amber);
+}
+.dtw-now-line::after {
+  content: "now";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--amber);
+}
+
+.dtw-dose {
+  position: absolute;
+  top: -13px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.dtw-dose .pill {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+}
+.dtw-dose.taken .pill { background: var(--success); border-color: var(--success); }
+.dtw-dose.next .pill { background: var(--amber); border-color: var(--amber); animation: pulse 1.8s infinite; }
+.dtw-dose .dtw-time { font-family: var(--font-mono); font-size: 0.72rem; color: #C9DED9; white-space: nowrap; }
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(217,138,61,0.55); }
+  70% { box-shadow: 0 0 0 10px rgba(217,138,61,0); }
+  100% { box-shadow: 0 0 0 0 rgba(217,138,61,0); }
+}
+
+.dtw-alert {
+  background: rgba(217,138,61,0.15);
+  border: 1px solid rgba(217,138,61,0.4);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.85rem;
+}
+.dtw-alert .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); flex-shrink: 0; }
+
+/* ===== Section shared styles ===== */
+.section {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 70px 6vw;
+}
+.section-head { max-width: 620px; margin-bottom: 44px; }
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  display: block;
+}
+.section-head h2 { font-family: var(--font-display); font-size: 2rem; margin: 0 0 12px; color: var(--teal-dark); }
+.section-head p { color: var(--muted); }
+
+/* Feature cards */
+.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+@media (max-width: 880px) { .feature-grid { grid-template-columns: 1fr; } }
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+}
+.feature-card .icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--teal-tint);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+.feature-card h3 { font-family: var(--font-display); font-size: 1.1rem; margin: 0 0 8px; }
+.feature-card p { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+/* How it works - real 3-step sequence, numbering justified */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+@media (max-width: 880px) { .steps { grid-template-columns: 1fr; } }
+.step { position: relative; padding-left: 4px; }
+.step .step-num {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: var(--amber);
+  opacity: 0.5;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.step h4 { font-family: var(--font-display); margin: 0 0 8px; font-size: 1.1rem; }
+.step p { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+/* Doctor module callout */
+.doctor-panel {
+  background: var(--teal-dark);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 48px 6vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 1160px;
+  margin: 0 auto 70px;
+}
+@media (max-width: 880px) { .doctor-panel { grid-template-columns: 1fr; padding: 36px 8vw; } }
+.doctor-panel h2 { font-family: var(--font-display); font-size: 1.7rem; margin: 0 0 14px; }
+.doctor-panel p { color: #C9DED9; margin-bottom: 20px; }
+.doctor-panel ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.doctor-panel li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.92rem; color: #E4F0ED; }
+.doctor-panel li::before { content: "✓"; color: var(--amber); font-weight: 700; }
+
+/* Final CTA */
+.cta-band {
+  text-align: center;
+  padding: 70px 6vw 90px;
+}
+.cta-band h2 { font-family: var(--font-display); font-size: 2rem; color: var(--teal-dark); margin-bottom: 14px; }
+.cta-band p { color: var(--muted); margin-bottom: 26px; }
